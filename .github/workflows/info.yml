@@ -1,0 +1,22 @@
+name: Info Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+    info:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Check out code
+              uses: actions/checkout@v4
+
+            - name: Print commit info
+              run: |
+                echo: "Branch: ${{ github.ref }}"
+                echo: "Commit SHA: ${{ github.sha }}"
+                echo: "Commit Message: ${{ github.event.head_commit.message }}"
+                echo: "Pusher: ${{ github.actor }}"
+                
