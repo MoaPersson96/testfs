@@ -1,0 +1,11 @@
+{
+  "name": "testfs",
+  "version": "0.1.0",
+  "description": "Minimal package.json for CI",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Running tests...\" && exit 0",
+    "build": "echo \"Building project...\" && exit 0"
+  },
+  "license": "MIT"
+}
