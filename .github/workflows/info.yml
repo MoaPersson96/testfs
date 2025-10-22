@@ -15,8 +15,8 @@ jobs:
 
             - name: Print commit info
               run: |
-                echo: "Branch: ${{ github.ref }}"
-                echo: "Commit SHA: ${{ github.sha }}"
-                echo: "Commit Message: ${{ github.event.head_commit.message }}"
-                echo: "Pusher: ${{ github.actor }}"
+                echo "Branch: ${{ github.ref }}"
+                echo "Commit SHA: ${{ github.sha }}"
+                echo "Commit Message: ${{ github.event.head_commit.message }}"
+                echo "Pusher: ${{ github.actor }}"
                 
