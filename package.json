@@ -5,7 +5,7 @@
   "scripts": {
     "build": "echo \"Building project...\" && exit 0",
     "lint": "eslint .",
-    "test": "echo \"Error: No test specified\" && exit 1"
+    "test": "echo \"No tests yet\""
   },
   "license": "MIT",
   "devDependencies": {
