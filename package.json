@@ -1,12 +1,11 @@
 {
   "name": "testfs",
   "version": "0.1.0",
-  "description": "Minimal package.json for CI",
-  "private": true,
+  "type": "module",
   "scripts": {
-    "test": "echo \"Running tests...\" && exit 0",
     "build": "echo \"Building project...\" && exit 0",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "test": "echo \"Error: No test specified\" && exit 1"
   },
   "license": "MIT",
   "devDependencies": {
