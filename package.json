@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "test": "echo \"Running tests...\" && exit 0",
-    "build": "echo \"Building project...\" && exit 0"
+    "build": "echo \"Building project...\" && exit 0",
+    "lint": "eslint ."
   },
   "license": "MIT"
 }
