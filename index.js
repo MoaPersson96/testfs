@@ -1,4 +1,5 @@
 console.log("Hello world!");
 
-const x= 5
-console.log(x);
+// Test för uppgift 5
+// const x= 5
+// console.log(x);
