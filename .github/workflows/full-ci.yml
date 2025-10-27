@@ -38,3 +38,6 @@ jobs:
 
             - name: Pipeline complete
               run: echo "Full CI Pipeline completed successfully!"
+
+            - name: Mock deployment step
+              run: echo "Deploying application to mock environment..."
