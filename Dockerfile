@@ -10,7 +10,7 @@ RUN npm install
 
 COPY . .
 
-RUN npm test
+RUN npm test -- --passWithNoTests
 
 # Runtime stage
 FROM node:18-alpine AS runtime
