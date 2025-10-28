@@ -1,0 +1,25 @@
+name: Docker Build CI
+
+# Triggas vid push till dev-branch
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      #  Checka ut koden
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      #  Bygg Docker-image
+      - name: Build Docker image
+        run: |
+          docker build -t zowerino/demo:latest .
+
+      # Lista images för verifiering
+      - name: List Docker images
+        run: docker images
