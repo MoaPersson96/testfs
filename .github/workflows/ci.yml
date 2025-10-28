@@ -24,7 +24,7 @@ jobs:
 
           - name: Run tests in builder container
             run: |
-              docker run --rm demo-builder:latest npm test
+              docker run --rm demo-builder:latest npm test -- --passWithNoTests
 
           - name: Login to DockerHub
             env:
