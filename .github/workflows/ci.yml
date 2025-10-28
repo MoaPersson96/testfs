@@ -1,35 +1,25 @@
-name: Frontend CI
+name: Docker Build CI
 
+# Triggas vid push till dev-branch
 on:
-    push:
-        branches:
-            - main
+  push:
+    branches:
+      - dev
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest
 
-        steps:
-            - name: Check out repository
-              uses: actions/checkout@v4
+    steps:
+      #  Checka ut koden
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-            - name: Print GitHub context
-              run: |
-                echo "Branch: ${{ github.ref }}"
-                echo "Commit SHA: ${{ github.sha }}"
-                echo "Pusher: ${{ github.actor }}"
+      #  Bygg Docker-image
+      - name: Build Docker image
+        run: |
+          docker build -t zowerino/demo:latest .
 
-            - name: Set up Node.js
-              uses: actions/setup-node@v4
-              with:
-                node-version: 18
-
-            - name: Install dependencies
-              run: npm install
-
-            - name: Run tests
-              run: npm test
-
-            - name: Build project
-              run: npm run build
-
+      # Lista images för verifiering
+      - name: List Docker images
+        run: docker images
