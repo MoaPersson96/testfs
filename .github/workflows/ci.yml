@@ -18,7 +18,7 @@ jobs:
       #  Bygg Docker-image
       - name: Build Docker image
         run: |
-          docker build -t zowerino/demo:latest .
+          docker build -t zowerino/demo:latest -f api/Dockerfile .
 
       # Lista images för verifiering
       - name: List Docker images
