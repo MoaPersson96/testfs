@@ -1,35 +1,36 @@
-name: Docker Build CI
+name: Dockermulti CI
 
-# Triggas vid push till dev-branch
 on:
-  push:
-    branches:
-      - dev
+    push:
+        branches:
+            - dockermulti
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+    build:
+        runs-on: ubuntu-latest
 
-    steps:
-      #  Checka ut koden
-      - name: Checkout code
-        uses: actions/checkout@v4
 
-      #  Bygg Docker-image
-      - name: Build Docker image
-        run: |
-          docker build -t zowerino/demo:latest -f api/Dockerfile .
+        steps:
+          - name: Checkout code
+            uses: actions/checkout@v4
 
-      - name: Run tests in container
-        run: |
-          docker run --rm zowerino/demo:latest sh -c "npm test"
+          - name: Build and test builder image
+            run: |
+              docker build --target builder -t demo-builder:latest .
 
-      # Extra
+          - name: Build runtime image
+            run: |
+              docker build --target runtime -t zowerino/demo:latest .
 
-      - name: Build Extra image
-        run: |
-          docker build -t zowerino/extra:latest -f extra/Dockerfile ./extra
+          - name: Run tests in builder container
+            run: |
+              docker run --rm demo-builder:latest npm test
 
-      - name: Run Extra tests
-        run: |
-          docker run --rm zowerino/extra:latest sh -c "npm test"
+          - name: Login to DockerHub
+            env:
+              DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+              DOCKER_PASSWOPRD: ${{ secrets.DOCKER_PASSWORD }}
+            run: echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+
+          - name: Push runtime image
+            run: docker push zowerino/demo:latest
