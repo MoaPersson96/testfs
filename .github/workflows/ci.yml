@@ -23,3 +23,13 @@ jobs:
       - name: Run tests in container
         run: |
           docker run --rm zowerino/demo:latest sh -c "npm test"
+
+      # Extra
+
+      - name: Build Extra image
+        run: |
+          docker build -t zowerino/extra:latest -f extra/Dockerfile ./extra
+
+      - name: Run Extra tests
+        run: |
+          docker run --rm zowerino/extra:latest sh -c "npm test"
