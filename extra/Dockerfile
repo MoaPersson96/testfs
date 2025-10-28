@@ -6,7 +6,7 @@ COPY extra/package*.json ./
 
 RUN npm install
 
-COPY extra/. .
+COPY . .
 
 EXPOSE 4000
 
