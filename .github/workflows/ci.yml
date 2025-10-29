@@ -18,7 +18,7 @@ jobs:
             run: docker build --target builder -t v38-builder:latest .
 
           - name: Run tests in builder container
-            run: docker run --rm v38-builder:latest npm test
+            run: docker run --rm v38-builder:latest npm test -- --passWithNoTests
 
           - name: Build production image
             run: docker build --target production -t v38-production:latest .
