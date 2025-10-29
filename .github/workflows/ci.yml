@@ -3,7 +3,7 @@ name: Dockermulti CI
 on:
     push:
         branches:
-            - dockermulti
+            - Vecka-38
 
 jobs:
     build:
@@ -14,20 +14,14 @@ jobs:
           - name: Checkout code
             uses: actions/checkout@v4
 
-          - name: Build and test builder image
-            run: |
-              docker build --target builder -t demo-builder:latest .
-
-          - name: Build runtime image
-            run: |
-              docker build --target runtime -t zowerino/demo:latest .
+          - name: Build test image
+            run: docker build -target builder -t v38-builder:latest .
 
           - name: Run tests in builder container
-            run: |
-              docker run --rm demo-builder:latest npm test -- --passWithNoTests
+            run: docker run --rm v38-builder:latest npm test
 
-          - name: Login to DockerHub
-            run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+          - name: Build production image
+            run: docker build --target production -t v38-production:latest .
 
-          - name: Push runtime image
-            run: docker push zowerino/demo:latest
+          - name: Push production image to Docker Hub
+            run: docker push zowerino/v38:latest
