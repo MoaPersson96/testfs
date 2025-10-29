@@ -21,7 +21,7 @@ jobs:
             run: docker run --rm v38-builder:latest npm test -- --passWithNoTests
 
           - name: Build production image
-            run: docker build --target production -t v38-production:latest .
+            run: docker build --target production -t zowerino/v38:latest .
 
           - name: Push production image to Docker Hub
             run: docker push zowerino/v38:latest
