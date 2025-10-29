@@ -1,0 +1,15 @@
+# Vecka 36. Uppgift 7
+
+Build/test stage:
+Här installeras alla utvecklingsberoenden, inklusive testverktyg som Jest. I detta så byggs och testas applikationen. Det är här som olika delar finns som inte behövs i produktion (som testdata, källkod m.m).
+
+Runtime-stage:
+I detta steg så skapas den slutliga körbara imagen. Här finns endast den kod och beroenden som faktiskt behövs för att kunna köra applikationen, det kopieras in hit. Det finns inga testverktyg eller utvecklingsfiler i denna image. Detta gör så att imagen kommer att vara mycket mindre och säkrare.
+
+Det är bra att separera dessa för att byggprocessen kommer att gå snabbare - Docker kan cachea varje steg separat.
+Det är säkrare eftersom att test och utvecklingsberoenden som kan innehålla sårbarheter inte  kommer att finnas i produktionsimagen.
+
+Genom detta så kommer det att vara snabbare att göra push/pull till Docker Hub - Snabbare deployment till moln tjänster eller CI/CD-miljöer. Det är också ett mer professionellt arbetset eftersom att bara produktionskoden publiceras.
+
+# Reflektion över uppgift 7
+I ett större team så kommer nog multi-stage builds att vara mycket värdefullt. Utvecklare kan testa och bygga builder-stages utan att skriva eller ändra på produktionsimagen. Alla använder samma CI-pipeline, blir enklare att testa och felsöka eftersom att stegen är mer tydliga. Och man slipper ha flera olika Dockerfiler för alla olika miljöer.
