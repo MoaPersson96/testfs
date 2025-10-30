@@ -11,4 +11,8 @@ Gör en commit med den nya koden och pusha den till din dev-branch.
 När din pipeline har deployat koden, gå till Log Stream i Azure Portal.
 Anropa endpointen som du just lade till felet i.
 Kolla logg: Kolla loggen om ni kan se den specifika console.error()-utskriften (var medveten om tidsstämplarna i loggen)
-Skicka gärna skärmdump på loggen till mig på slack
+Skicka gärna skärmdump på loggen
+
+
+Skärmdump på loggen:
+https://imgur.com/G8zNxBB
