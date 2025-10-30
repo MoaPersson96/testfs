@@ -22,33 +22,33 @@ jobs:
           node-version: '18'
 
 
-      # Service A
-      - name: Install dependencies for Service A
+      # frontend
+      - name: Install dependencies for frontend
         run: |
-          cd service-a
+          cd frontend
           npm install
 
-      - name: Run tests for Service A
+      - name: Run tests for frontend
         run: |
-          cd service-a
+          cd frontend
           npm test
 
-      - name: Build Docker image for Service A
+      - name: Build Docker image for frontend
         run: |
-          docker build -t service-a-image ./service-a
+          docker build -t frontend-image ./frontend
 
       
-      # Service B
-      - name: Install dependencies for Service B
+      # backend
+      - name: Install dependencies for backend
         run: |
-          cd service-b
+          cd backend
           npm install
 
-      - name: Run tests for Service B
+      - name: Run tests for backend
         run: |
-          cd service-b
+          cd backend
           npm test
 
-      - name: Build Docker image for Service B
+      - name: Build Docker image for backend
         run: |
-          docker build -t service-b-image ./service-b
+          docker build -t backend-image ./backend
