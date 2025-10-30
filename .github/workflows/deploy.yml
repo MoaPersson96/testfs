@@ -3,7 +3,7 @@ name: Deploy Backend to Azure
 on:
   push:
     branches:
-        - v39-uppgift1-3
+        - v39-uppgift2
 
 jobs:
     deploy-backend:
