@@ -7,7 +7,7 @@ app.get("/", (req, res) => {
 
 app.get("/api/test-500", (req, res) => {
   console.error("🔥 TEST 500: Medvetet fel!");
-  res.status(500).send("Intentional Internal Server Error");
+  res.status(500).send("Internal Server Error");
 });
 
 const port = process.env.PORT || 3000;
