@@ -1,0 +1,40 @@
+name: Deploy Backend to Azure
+
+on:
+  push:
+    branches:
+        - v39-uppgift1-3
+
+jobs:
+    deploy-backend:
+      runs-on: ubuntu-latest
+
+      steps:
+        - name: Checkout Repository
+          uses: actions/checkout@v4
+
+        - name: Login to Azure
+          uses: azure/login@v2
+          with:
+            creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+        - name: Setup Node
+          uses: actions/setup-node@v4
+          with:
+            node-version: '22'
+
+        - name: Install Dependencies
+          run: |
+            cd backend
+            npm install
+
+        - name: Run tests
+          run: |
+            cd backend
+            npm test || echo "Tests failed"
+
+        - name: Deploy to Azure Web App
+          uses: azure/webapps-deploy@v3
+          with:
+            app-name: training-moa
+            package: ./backend

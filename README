@@ -1,7 +1,14 @@
-# Vecka 38. Uppgift 4
+Vecka 39. Uppgift 1
 
-Optimerad Dockerfile
-Bättre caching: Genom att kopiera package*.json innan resten av koden så återanvänds installeringen av beroenden OM koden ändras.
-Genom att använda npm ci så får man en snabbare byggtid eftersom att man hoppar över npm install - npm ci ger konsekventa installationer.
-Man får endast produktionsberoenden i runtime-imagen. Man får då en mindre slutimage.
-Uppnår en renare produktion - testfiler, utvecklingsverktyg och andra onödiga moduler finns inte längre med i slutprodukten.
+Uppgift 1: Felsökning i realtid med Log Stream
+Monitoring - App Service logs - slå på FIle System för Application logging
+
+Mål: Bevisa att du kan använda Log Stream för att spåra ett fel i realtid genom att medvetet skapa en felutskrift i din kod.
+Instruktioner:
+Öppna din backend-applikation och hitta en fil som hanterar ett API-anrop.
+Inuti den funktionen, lägg till en console.error()-utskrift med ett tydligt felmeddelande.
+Gör en commit med den nya koden och pusha den till din dev-branch.
+När din pipeline har deployat koden, gå till Log Stream i Azure Portal.
+Anropa endpointen som du just lade till felet i.
+Kolla logg: Kolla loggen om ni kan se den specifika console.error()-utskriften (var medveten om tidsstämplarna i loggen)
+Skicka gärna skärmdump på loggen till mig på slack

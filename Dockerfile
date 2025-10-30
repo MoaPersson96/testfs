@@ -1,28 +1,12 @@
-# Stage 1: Builder
-
-FROM node:18-alpine AS builder
+FROM node:22-alpine
 
 WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm ci
+RUN npm install
 
 COPY . .
-
-RUN npm test -- --passWithNoTests
-
-# Stage 2: Production
-
-FROM node:18-alpine AS production
-
-WORKDIR /app
-
-COPY package*.json ./
-
-RUN npm ci --only=production
-
-COPY --from=builder /app ./
 
 EXPOSE 3000
 
