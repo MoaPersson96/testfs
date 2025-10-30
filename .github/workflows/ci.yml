@@ -1,28 +1,27 @@
-name: v36 CI
+name: CI - Parallel Jobs
 
 on:
   push:
     branches:
-      - v36
+      - v36-uppgift4
   pull_request:
     branches:
-      - v36
+      - v36-uppgift4
 
 jobs:
-  build:
+  # FRONTEND
+  build-frontend:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Sed up Node
+      - name: Set up Node
         uses: actions/setup-node@v4
         with:
           node-version: '18'
 
-
-      # frontend
       - name: Install dependencies for frontend
         run: |
           cd frontend
@@ -37,8 +36,20 @@ jobs:
         run: |
           docker build -t frontend-image ./frontend
 
-      
-      # backend
+
+          # BACKEND
+  build-backend:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
       - name: Install dependencies for backend
         run: |
           cd backend

@@ -1,16 +1,7 @@
-Vecka 36. Uppgift 3
+Vecka 36. Uppgift 4
 
-
-Uppgift 3: Skala upp CI
-
-Mål: Förstå hur en enda pipeline kan hantera en applikation med flera tjänster och hur det påverkar körtiden.
-Nu när ni har en pipeline för en tjänst, är det dags att lägga till ytterligare en. Om ni har klonat startprojektet kan ni använda den befintliga frontend-tjänsten, men vi rekommenderar starkt att ni skapar en eller flera helt nya mikrotjänster för den här uppgiften. Repetition är nyckeln till att lära sig!
-1. Förbered din andra tjänst: Skapa en ny mapp för din tjänst. Se till att den uppfyller följande minimikrav:
-En Dockerfile.
-En körbar fil (t.ex. index.js).
-Enkel logik som bekräftar att tjänsten fungerar.
-Ett test-skript (t.ex. i package.json) och ett enkelt test för att verifiera att testerna kan köras. (Går bra att återanvända test från andra tjänster)
-2. Utöka pipelinen: I er ci.yml-fil, lägg till nya steg i det befintliga jobbet för att:
-Bygga en image från din nya tjänst
-Köra ett test för din nya tjänst
-Dessa steg ska placeras efter de befintliga stegen för er första tjänst. Om ni vill kan ni återanvända samma testkonfiguration som för den andra tjänsten för att bekräfta att allt fungerar.
+Uppgift 4: Jämför med parallell exekvering
+Mål: Lär dig att köra flera jobb parallellt och förstå fördelarna med det.
+Skapa ett nytt jobb: Modifiera din ci.yml-fil. Skapa ett nytt, separat jobb. Döpa det till något lämpligt, till exempel build-second-service.
+Kopiera stegen: Flytta över stegen som bygger och testar din andra tjänst till det nya jobbet.
+Pusha och jämför: Pusha dina ändringar till GitHub. Gå till fliken Actions och se hur båda jobben nu körs samtidigt. Jämför den totala tiden med resultatet från Uppgift 3, blev det någon skillnad?
