@@ -6,7 +6,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/api/test-error", (req, res) => {
-  console.error("🔥 TEST ERROR: Detta är ett medvetet fel för Log Stream!");
+  console.error("🔥 TEST ERROR: Detta är ett medvetet fel för Log Stream! Test");
   res.status(500).send("Ett medvetet fel uppstod!");
 });
 
