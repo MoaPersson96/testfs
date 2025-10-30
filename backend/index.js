@@ -5,9 +5,9 @@ app.get("/", (req, res) => {
   res.send("Backend is running on Azure!");
 });
 
-app.get("/api/test-error", (req, res) => {
-  console.error("🔥 TEST ERROR: Detta är ett medvetet fel för Log Stream! Test");
-  res.status(500).send("Ett medvetet fel uppstod!");
+app.get("/api/test-500", (req, res) => {
+  console.error("🔥 TEST 500: Medvetet fel!");
+  res.status(500).send("Intentional Internal Server Error");
 });
 
 const port = process.env.PORT || 3000;

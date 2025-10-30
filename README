@@ -1,18 +1,10 @@
-Vecka 39. Uppgift 1
+Vecka 39. Uppgift 2
 
-Uppgift 1: Felsökning i realtid med Log Stream
-Monitoring - App Service logs - slå på FIle System för Application logging
-
-Mål: Bevisa att du kan använda Log Stream för att spåra ett fel i realtid genom att medvetet skapa en felutskrift i din kod.
+Uppgift 2: Bygg en instrumentpanel med Metrics
+Mål: Skapa en anpassad instrumentpanel som ger en snabb överblick av appens hälsa med hjälp av olika mätvärden från Azure.
 Instruktioner:
-Öppna din backend-applikation och hitta en fil som hanterar ett API-anrop.
-Inuti den funktionen, lägg till en console.error()-utskrift med ett tydligt felmeddelande.
-Gör en commit med den nya koden och pusha den till din dev-branch.
-När din pipeline har deployat koden, gå till Log Stream i Azure Portal.
-Anropa endpointen som du just lade till felet i.
-Kolla logg: Kolla loggen om ni kan se den specifika console.error()-utskriften (var medveten om tidsstämplarna i loggen)
-Skicka gärna skärmdump på loggen
-
-
-Skärmdump på loggen:
-https://imgur.com/G8zNxBB
+Gå till Metrics i din App Service-resurs.
+Skapa en ny graf med två mått:
+Ett mått som räknar antalet lyckade anrop (t.ex. Http 2xx).
+Ett mått som räknar antalet serverfel (t.ex. Http Server Errors).
+Uppgift: Gå till din backend-kod och introducera ett fel som orsakar en 500 Internal Server Error. Anropa din applikation några gånger och se hur grafen för serverfel reagerar. Ta gärna en skärmdump som visar både lyckade anrop och fel och skicka till mig på slack.
