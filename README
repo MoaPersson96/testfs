@@ -1,14 +1,16 @@
-Vecka 39. Uppgift 2
+Vecka 39. Uppgift 3
 
-Uppgift 2: Bygg en instrumentpanel med Metrics
-Mål: Skapa en anpassad instrumentpanel som ger en snabb överblick av appens hälsa med hjälp av olika mätvärden från Azure.
+Uppgift 3: Skapa proaktiva varningar
+Mål: Skapa två varningsregler för att få förståelse för proaktiv övervakning av både fel och resursanvändning.
 Instruktioner:
-Gå till Metrics i din App Service-resurs.
-Skapa en ny graf med två mått:
-Ett mått som räknar antalet lyckade anrop (t.ex. Http 2xx).
-Ett mått som räknar antalet serverfel (t.ex. Http Server Errors).
-Uppgift: Gå till din backend-kod och introducera ett fel som orsakar en 500 Internal Server Error. Anropa din applikation några gånger och se hur grafen för serverfel reagerar.
-Ta gärna en skärmdump som visar både lyckade anrop och fel och skicka till mig på slack.
-
-Skärmdump:
-https://imgur.com/hGaGtzo
+Gå till Alerts i din App Service-resurs.
+Varningsregel 1: Reaktiv HTTP-felsökning
+Skapa en ny varningsregel som övervakar måttet Http Server Errors.
+Sätt villkoret till: är större än 0 över en period på en minut.
+Konfigurera regeln så att den skickar en notifikation (t.ex. ett e-postmeddelande) när den triggas.
+Varningsregel 2: Proaktiv resursövervakning
+Skapa en andra varningsregel för ett valfritt mått som inte är relaterat till HTTP-fel. Ett bra val är Memory Usage (minnesanvändning) eller CPU Time.
+Sätt ett rimligt tröskelvärde, till exempel är större än 100 MB för minnesanvändning.
+Uppgift:
+Introducera ett fel i eran kod eller återanvänd ett befintligt om ni redan har ett från föregående uppgift, t.ex ett http anrop som blir ett error. Försök att göra så ni får ett mail om varningen. 
+Skicka gärna skärmdump om ni lyckas få ett mail till mig på slack
