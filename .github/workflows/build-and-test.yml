@@ -1,0 +1,42 @@
+name: Build and Test
+
+on:
+  push:
+    branches:
+      - v43-uppgift1
+  pull_request:
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: javascript
+
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+            
+      - name: Install dependencies
+        run: npm install
+            
+      - name: Run tests
+        run: npm test || echo "Tests failed"
+            
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3

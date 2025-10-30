@@ -1,7 +1,15 @@
-# Vecka 38. Uppgift 4
+Vecka 43. Uppgift 1
 
-Optimerad Dockerfile
-Bättre caching: Genom att kopiera package*.json innan resten av koden så återanvänds installeringen av beroenden OM koden ändras.
-Genom att använda npm ci så får man en snabbare byggtid eftersom att man hoppar över npm install - npm ci ger konsekventa installationer.
-Man får endast produktionsberoenden i runtime-imagen. Man får då en mindre slutimage.
-Uppnår en renare produktion - testfiler, utvecklingsverktyg och andra onödiga moduler finns inte längre med i slutprodukten.
+Uppdatera YAML – Behörigheter & CodeQL
+Du ska nu redigera din build-and-test.yml (eller motsvarande fil) i ditt GitHub-repo.
+1. Lägg till nya behörigheter
+Vi måste lägga till en extra behörighet i ditt YAML-jobb så att CodeQL kan rapportera säkerhetsresultat. Behörigheten gäller för security-events.
+Hitta permissions:-sektionen och ändra den till följande. Om du inte har den, lägg till den under runs-on: ubuntu-latest.
+    
+   
+2. Lägg till CodeQL-initiering
+Nu introducerar vi den första delen av CodeQL-processen (AI-granskning). Detta måste ske direkt efter Checkout code. Vi behöver lägga till en behörighet för Checkout steget samt ett nytt steg för själva CodeQL
+
+
+Dubbelkolla
+Kontrollera att din YAML-fil nu innehåller de nya behörigheterna, fetch-depth: 0 och steget Initialize CodeQL. fetch-depth: 0 behövs för att CodeQL ska få hela vår branch historik för att kunna göra djupare analyser och ge oss feedback
