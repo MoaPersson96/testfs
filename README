@@ -7,4 +7,8 @@ Gå till Metrics i din App Service-resurs.
 Skapa en ny graf med två mått:
 Ett mått som räknar antalet lyckade anrop (t.ex. Http 2xx).
 Ett mått som räknar antalet serverfel (t.ex. Http Server Errors).
-Uppgift: Gå till din backend-kod och introducera ett fel som orsakar en 500 Internal Server Error. Anropa din applikation några gånger och se hur grafen för serverfel reagerar. Ta gärna en skärmdump som visar både lyckade anrop och fel och skicka till mig på slack.
+Uppgift: Gå till din backend-kod och introducera ett fel som orsakar en 500 Internal Server Error. Anropa din applikation några gånger och se hur grafen för serverfel reagerar.
+Ta gärna en skärmdump som visar både lyckade anrop och fel och skicka till mig på slack.
+
+Skärmdump:
+https://imgur.com/hGaGtzo
