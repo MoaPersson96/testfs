@@ -10,7 +10,7 @@ RUN npm ci
 
 COPY . .
 
-RUN npm test -- --passWithNoTests
+RUN npm test
 
 # Stage 2: Production
 
