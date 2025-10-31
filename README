@@ -9,3 +9,8 @@ Skapa Prod-Pipeline (prod-ci.yml) : Skapa en separat pipeline som triggas vid pu
 Implementera Spårbarhet med Git SHA : Ta bort alla latest-taggar i båda pipelines. Se till att Docker-imagen i båda pipelines taggas med Git SHA från den commit som triggade pipelinen (t.ex. acr.io/app:$(git rev-parse --short HEAD)).
 
 Verifiera Kvalitetsgrinden: : Skapa ett medvetet testfel i din backend-kod på en feature-branch och pusha till dev. Verifiera att Dev-pipelinen stoppas vid teststeget, men att den senaste godkända imagen fortfarande är tillgänglig i API-PROD.
+
+Denna uppgift har jag skapad dev3 branch och en main3 branch:
+I dev3 har jag skapat dev-ci.yml
+I main3 har jag skapat prod-ci.yml
+Jag har sen skapat feature/test-fail branch för att testa ett dummy test för att säkerställa så att pipelinen inte går igenom när jag mergade feature/test-fail in till dev3 - pipelinen misslyckades när jag gjorde det.
