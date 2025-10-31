@@ -26,10 +26,12 @@ jobs:
       - name: Build Docker image
         run: |
           GIT_SHA=$(git rev-parse --short HEAD)
+          echo "GIT_SHA=$GIT_SHA"
           docker build -t mybackend.azurecr.io/my-backend:${GIT_SHA} .
 
       - name: Run Unit Tests
         run: |
+          GIT_SHA=$(git rev-parse --short HEAD)
           docker run --rm mybackend.azurecr.io/my-backend:${GIT_SHA} npm test
 
       - name: Push Docker image
