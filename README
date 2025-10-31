@@ -1,15 +1,13 @@
-Vecka 43. Uppgift 1
+Vecka 41. Uppgift 1
 
-Uppdatera YAML – Behörigheter & CodeQL
-Du ska nu redigera din build-and-test.yml (eller motsvarande fil) i ditt GitHub-repo.
-1. Lägg till nya behörigheter
-Vi måste lägga till en extra behörighet i ditt YAML-jobb så att CodeQL kan rapportera säkerhetsresultat. Behörigheten gäller för security-events.
-Hitta permissions:-sektionen och ändra den till följande. Om du inte har den, lägg till den under runs-on: ubuntu-latest.
-    
-   
-2. Lägg till CodeQL-initiering
-Nu introducerar vi den första delen av CodeQL-processen (AI-granskning). Detta måste ske direkt efter Checkout code. Vi behöver lägga till en behörighet för Checkout steget samt ett nytt steg för själva CodeQL
+Uppgift 1: Första Steget till Edge – Preview Deployments
+Mål: Lär dig använda Azure Static Web Apps (SWA) för att automatiskt skapa Preview Deployments vid varje Pull Request, vilket möjliggör snabb och agil kodgranskning i en temporär miljö.
+Skapa Static Web App (SWA) : Navigera till Azure Portal och skapa en ny Azure Static Web App-resurs. Välj att koppla den direkt till ditt Git-repo (din frontend-kod) och se till att den pekar på din dev/development-branch som standard.
 
+Förbered Pipeline-Filen : Gör en git pull på din dev-branch. Azure har nu skapat en ny pipeline-fil i ditt .github/workflows-bibliotek. Behåll den eller modifiera den till dina önskade specifikationer. TIPS: Byt namn på filen för tydlighet.
 
-Dubbelkolla
-Kontrollera att din YAML-fil nu innehåller de nya behörigheterna, fetch-depth: 0 och steget Initialize CodeQL. fetch-depth: 0 behövs för att CodeQL ska få hela vår branch historik för att kunna göra djupare analyser och ge oss feedback
+Initiera Pull Request (PR) och Pipeline : Skapa en ny feature-branch lokalt (t.ex. feature/ui-change). Gör en liten, synlig ändring i din frontend-kod. Pusha grenen och skapa en Pull Request mot din dev-branch.
+
+Verifiera Temporär Preview URL : Kontrollera i din PR på GitHub att SWA automatiskt har triggat en build och skapat en unik Preview URL. Klicka på länken och verifiera att din kodändring syns där.
+
+Slutsats: Inkludera en skärmdump av din Preview Deployment i din README.md som bevis på agil granskning.
