@@ -1,40 +1,16 @@
-Vecka 36. Uppgift 5
+Vecka 42. Uppgift 1:
 
-Uppgift 5: Pipelinefel – simulera och förstå felhantering
-Mål: Förstå vad som händer när pipelinen failar och hur man felsöker.
- Instruktioner:
-Gör en medveten bugg i koden (t.ex. få en test att faila).
+Uppgift 1: Automatiserad API-Dokumentation (Docs-as-Code)
+Denna uppgift slutför er Docs-as-Code-strategi. Ni ska knyta ihop JSDoc-kommentarerna med er CI/CD-pipeline för att bevisa att dokumentation blir alltid uppdaterad och live på webben.
+Steg 1: Förbered Koden och Skriv Specifikationen
+Ni måste säkerställa att API:et har förmågan att generera specifikationen.
+Verifiera Konfiguration: Kontrollera att filerna swaggerConfig.js och generate-docs.js ligger i rooten av er backend projekt/mapp
 
-Push och kör pipelinen.
+Öppna generate-docs.js och skriv erat script.
 
-Skärmdumpa felet i GitHub Actions.
+kör scriptet en gång manuellt för att skapa eran /docs mapp. I terminalen skriver ni node generate-docs.js (eller namnet ni har anget erat script)
+OBS! Se till att scriptet finns i package.json
 
-Skriv i README hur du:
+Justera Config: Öppna swaggerConfig.js och kontrollera att raden apis: ['./[DIN FIL HÄR]'] pekar på den fil ni just ändrade.
 
-Hittade felet i loggen.
-
-Fixade buggen.
-
-Verifierade att pipelinen blev grön igen.
-
-🔑 Varför: Lär er felsöka pipelines – bra DevOps-skills att ha.
-
-
-## Skärmdump på GitHub Action error:
--  https://imgur.com/y1MtcQA
--  https://imgur.com/OL3xP8g
-
-Jag skapade ett medvetet fel i min dummy.test.js - körde min pipeline och läste igenom min kod - läste igenom actions loggen för att få ett bättre förstånd över hur loggen fungerar. Där i stod det exact den kod jag skrivit och att det är den som inte går igenom testet.
-Jag gick sen in i den filen och fixade felet.
-
-Koden jag skrev in för fel:
-test('dummy test', () => {
-  expect(1 + 1).toBe(3);
-});
-
-Rättade den till:
-test('dummy test', () => {
-  expect(1 + 1).toBe(2);
-});
-
-
+Skriv Specifikationen (JSDoc): Öppna filen som hanterar era API-routes (t.ex. routes.js eller router.ts) och placera era JSDoc/Swagger-kommentarer direkt ovanför varje router.get/post-anrop.
