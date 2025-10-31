@@ -1,0 +1,3 @@
+Vecka 41. Uppgift 6
+
+Skapa Dev-Pipeline (dev-ci.yml) : Skapa en ny pipeline som triggas vid push till dev. Denna pipeline måste: Bygga din image, Köra Unit-tester och Deploya till din API-DEV-container.
