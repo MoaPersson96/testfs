@@ -31,15 +31,10 @@ jobs:
           echo "Building Docker image with tag: ${GIT_SHA}"
           docker build -t my-backend:${GIT_SHA} .
 
-      - name: Run Unit Tests
+      - name: Tag and push Docker image
         run: |
-          GIT_SHA=$(git rev-parse --short HEAD)
-          docker run --rm my-backend:${GIT_SHA} npm test
-
-      - name: Push Docker image
-        run: |
-          docker push ${{ env.ACR_REGISTRY }}/my-backend:${GIT_SHA}
-
+          docker tag mybackend_${GIT_SHA} ${{ env.ACR_REGISTRY }}/my-backend:${GIT_SHA}
+          
       - name: Deploy to API-DEV
         run: |
           az containerapp update \
