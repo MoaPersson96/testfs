@@ -8,7 +8,7 @@ function App() {
     <div className="App" style={{ textAlign: "center", marginTop: "3rem" }}>
       <h1> Azure Static Web App Demo</h1>
       <p>Detta är en testfrontend för Preview Deployments.</p>
-      <p>Testing</p>
+      <p>Testing1</p>
 
       <button onClick={() => setCount(count + 1)}>
         Klickad {count} gånger
