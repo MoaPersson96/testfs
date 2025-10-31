@@ -19,17 +19,3 @@ Verifierade att pipelinen blev grön igen.
 
 🔑 Varför: Lär er felsöka pipelines – bra DevOps-skills att ha.
 
-Uppgift 6: Förstå taggar bättre
-Mål: Lär er versionshantering av images i Docker Hub.
- Instruktioner:
-Bygg och pusha en image med :v1.0.0.
-
-Gör en kodändring och pusha som :v1.1.0.
-
-Byt i docker-compose.yml så att du använder :v1.0.0 och starta projektet.
-
-Byt till :v1.1.0 och starta igen.
-
-Dokumentera i README skillnaden mellan att alltid använda :latest och att specificera versions-taggar.
-
-🔑 Varför: Få en känsla för versionshantering
