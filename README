@@ -1,7 +1,11 @@
-# Vecka 38. Uppgift 4
+# Vecka 41. Uppgift 6
 
-Optimerad Dockerfile
-Bättre caching: Genom att kopiera package*.json innan resten av koden så återanvänds installeringen av beroenden OM koden ändras.
-Genom att använda npm ci så får man en snabbare byggtid eftersom att man hoppar över npm install - npm ci ger konsekventa installationer.
-Man får endast produktionsberoenden i runtime-imagen. Man får då en mindre slutimage.
-Uppnår en renare produktion - testfiler, utvecklingsverktyg och andra onödiga moduler finns inte längre med i slutprodukten.
+Uppgift 6: Backend CI/CD och Spårbarhet
+Mål: Implementera versionshanterade pipelines för båda Backend-miljöerna och säkerställa att Unit-testerna fungerar som en kvalitetsgrind för API-DEV.
+Skapa Dev-Pipeline (dev-ci.yml) : Skapa en ny pipeline som triggas vid push till dev. Denna pipeline måste: Bygga din image, Köra Unit-tester och Deploya till din API-DEV-container.
+
+Skapa Prod-Pipeline (prod-ci.yml) : Skapa en separat pipeline som triggas vid push till main. Denna pipeline ska inte köra Unit-testerna. Den ska Bygga och Deploya till din API-PROD-container.
+
+Implementera Spårbarhet med Git SHA : Ta bort alla latest-taggar i båda pipelines. Se till att Docker-imagen i båda pipelines taggas med Git SHA från den commit som triggade pipelinen (t.ex. acr.io/app:$(git rev-parse --short HEAD)).
+
+Verifiera Kvalitetsgrinden: : Skapa ett medvetet testfel i din backend-kod på en feature-branch och pusha till dev. Verifiera att Dev-pipelinen stoppas vid teststeget, men att den senaste godkända imagen fortfarande är tillgänglig i API-PROD.
