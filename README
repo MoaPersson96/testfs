@@ -1,16 +1,11 @@
-Vecka 41. Uppgift 1
+Vecka 41. Uppgift 2
 
-Uppgift 1: Första Steget till Edge – Preview Deployments
-Mål: Lär dig använda Azure Static Web Apps (SWA) för att automatiskt skapa Preview Deployments vid varje Pull Request, vilket möjliggör snabb och agil kodgranskning i en temporär miljö.
-Skapa Static Web App (SWA) : Navigera till Azure Portal och skapa en ny Azure Static Web App-resurs. Välj att koppla den direkt till ditt Git-repo (din frontend-kod) och se till att den pekar på din dev/development-branch som standard.
+Uppgift 2: Etablera Staging – Den Permanenta Testmiljön
+Mål: Gå från en temporär Preview Deployment till en stabil, permanent Staging-miljö. Denna miljö ska ligga på SWA:s primära URL och representera din godkända dev-kodbas.
+Förbered Deployment-Filen : Se till att din pipeline-fil (från Uppgift 1) är korrekt inställd för att triggas vid push till din dev-branch och deploya koden.
 
-Förbered Pipeline-Filen : Gör en git pull på din dev-branch. Azure har nu skapat en ny pipeline-fil i ditt .github/workflows-bibliotek. Behåll den eller modifiera den till dina önskade specifikationer. TIPS: Byt namn på filen för tydlighet.
+Genomför Permanent Deployment : Gå till din öppna Pull Request (från Uppgift 1) och merga den in i din dev-branch. Detta är den åtgärd som triggar den permanenta pipeline-körningen.
 
-Initiera Pull Request (PR) och Pipeline : Skapa en ny feature-branch lokalt (t.ex. feature/ui-change). Gör en liten, synlig ändring i din frontend-kod. Pusha grenen och skapa en Pull Request mot din dev-branch.
+Verifiera Permanent Staging-URL : Kontrollera din Azure Static Web App-resurs i portalen. Besök den primära URL som är associerad med din SWA. Verifiera att din kod nu har uppdaterats på denna permanenta adress.
 
-Verifiera Temporär Preview URL : Kontrollera i din PR på GitHub att SWA automatiskt har triggat en build och skapat en unik Preview URL. Klicka på länken och verifiera att din kodändring syns där.
-
-Slutsats: Inkludera en skärmdump av din Preview Deployment i din README.md som bevis på agil granskning.
-
-Skärmdump:
-https://imgur.com/inPp4K7
+Dokumentera: I din README.md, notera denna permanenta Staging-URL. Förklara kort varför denna länk (till skillnad från Preview URL:en) är den som ska delas med externa intressenter som en Produktägare (PO).
