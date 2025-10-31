@@ -26,10 +26,13 @@ jobs:
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
 
-      - name: Build Docker image
+      - name: Build Docker image (includes tests)
         run: |
           echo "Building Docker image with tag: ${GIT_SHA}"
           docker build -t my-backend:${GIT_SHA} .
+
+      - name: Verify Docker image
+        run: docker images
 
       - name: Tag and push Docker image
         run: |
