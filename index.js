@@ -1,3 +1,3 @@
-test('det här testet ska alltid misslyckas', () => {
+test('medvetet fel', () => {
   expect(1 + 1).toBe(3); // medvetet fel
 });
