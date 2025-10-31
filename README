@@ -9,3 +9,9 @@ Genomför Permanent Deployment : Gå till din öppna Pull Request (från Uppgift
 Verifiera Permanent Staging-URL : Kontrollera din Azure Static Web App-resurs i portalen. Besök den primära URL som är associerad med din SWA. Verifiera att din kod nu har uppdaterats på denna permanenta adress.
 
 Dokumentera: I din README.md, notera denna permanenta Staging-URL. Förklara kort varför denna länk (till skillnad från Preview URL:en) är den som ska delas med externa intressenter som en Produktägare (PO).
+
+### Mergad in till dev2 där finns detta i README:
+
+### Permanent Staging-URL
+Den permanenta testmiljö URL representerar den stabila dev-versionen av applikationen och den kan delas till externa personer såsom produktägare.
+Preview URL:en används bara för temp tester. Denna URL kan ändras och tas bort när PR:n stängs. På grund av detta är den inte menad att dela till personer utanför utvecklingen.
