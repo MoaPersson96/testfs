@@ -1,0 +1,3 @@
+Vecka 41. Uppgift 6
+
+Verifiera Kvalitetsgrinden: : Skapa ett medvetet testfel i din backend-kod på en feature-branch och pusha till dev. Verifiera att Dev-pipelinen stoppas vid teststeget, men att den senaste godkända imagen fortfarande är tillgänglig i API-PROD.
