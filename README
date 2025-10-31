@@ -1,0 +1,3 @@
+Vecka 41. Uppgift 6
+
+Skapa Prod-Pipeline (prod-ci.yml) : Skapa en separat pipeline som triggas vid push till main. Denna pipeline ska inte köra Unit-testerna. Den ska Bygga och Deploya till din API-PROD-container.
