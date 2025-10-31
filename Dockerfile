@@ -10,19 +10,7 @@ RUN npm ci
 
 COPY . .
 
-RUN npm test -- --passWithNoTests
-
-# Stage 2: Production
-
-FROM node:18-alpine AS production
-
-WORKDIR /app
-
-COPY package*.json ./
-
-RUN npm ci --only=production
-
-COPY --from=builder /app ./
+RUN npm test
 
 EXPOSE 3000
 
