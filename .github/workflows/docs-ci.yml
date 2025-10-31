@@ -1,0 +1,31 @@
+name: Generate API Docs
+
+on:
+  push:
+    branches:
+      - v42-uppgift5
+
+jobs:
+  generate_docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate API documentation
+        run: npm run docs:generate
+
+      - name: Upload generated docs
+        uses: actions/upload-artifact@v3
+        with:
+          name: openapi-json
+          path: docs/openapi.json

@@ -32,6 +32,7 @@ out/
 *.swp
 *.bak
 *.swo
+/docs/openapi.json
 
 # macOS och Windows
 # --------------------
