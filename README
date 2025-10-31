@@ -1,7 +1,15 @@
-# Vecka 38. Uppgift 4
+# Vecka 36. Uppgift 2
 
-Optimerad Dockerfile
-Bättre caching: Genom att kopiera package*.json innan resten av koden så återanvänds installeringen av beroenden OM koden ändras.
-Genom att använda npm ci så får man en snabbare byggtid eftersom att man hoppar över npm install - npm ci ger konsekventa installationer.
-Man får endast produktionsberoenden i runtime-imagen. Man får då en mindre slutimage.
-Uppnår en renare produktion - testfiler, utvecklingsverktyg och andra onödiga moduler finns inte längre med i slutprodukten.
+Uppgift 2: Lägg till automatiserade tester som körs i containern
+Mål: Utöka din pipeline med en kvalitetskontroll som kör tester inuti den byggda containern.
+Förbered dina tester: Om ditt projekt redan har tester eller om du har clonat projektet via länken i introt, hoppa till nästa steg. Om inte, lägg till ett enkelt test i din kodbas för att säkerställa att din pipeline fungerar. Ett enkelt exempel är att installera Jest (npm install --save-dev jest) och skapa en test.js-fil med ett grundläggande test, t.ex.:
+
+Lägg till ett teststeg: Modifiera din ci.yml-fil. Efter steget där du bygger din image, lägg till ett nytt steg som kör dina tester inuti containern med hjälp av npm test.
+
+Verifiera att pipelinen fungerar: Gör en commit med ditt test steg och pusha till GitHub. Kontrollera att din pipeline körs och slutförs framgångsrikt. Kolla gärna github actions och se att ett test steg har körts i pipelinen.
+
+Introducera ett fel: För att testa din pipeline lite extra, gör en liten kodändring som du vet kommer att orsaka att ett test misslyckas.
+
+Pusha och verifiera felet: Pusha din kod till GitHub och se hur pipelinen körs. Kontrollera att den automatiskt stannar med ett fel när testerna misslyckas.
+
+Fixa felet: Gör en ny commit där du åtgärdar felet. Pusha igen och bekräfta att pipelinen nu lyckas
