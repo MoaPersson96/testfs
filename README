@@ -1,15 +1,11 @@
-Vecka 43. Uppgift 1
+Vecka 41. Uppgift 2
 
-Uppdatera YAML – Behörigheter & CodeQL
-Du ska nu redigera din build-and-test.yml (eller motsvarande fil) i ditt GitHub-repo.
-1. Lägg till nya behörigheter
-Vi måste lägga till en extra behörighet i ditt YAML-jobb så att CodeQL kan rapportera säkerhetsresultat. Behörigheten gäller för security-events.
-Hitta permissions:-sektionen och ändra den till följande. Om du inte har den, lägg till den under runs-on: ubuntu-latest.
-    
-   
-2. Lägg till CodeQL-initiering
-Nu introducerar vi den första delen av CodeQL-processen (AI-granskning). Detta måste ske direkt efter Checkout code. Vi behöver lägga till en behörighet för Checkout steget samt ett nytt steg för själva CodeQL
+Uppgift 2: Etablera Staging – Den Permanenta Testmiljön
+Mål: Gå från en temporär Preview Deployment till en stabil, permanent Staging-miljö. Denna miljö ska ligga på SWA:s primära URL och representera din godkända dev-kodbas.
+Förbered Deployment-Filen : Se till att din pipeline-fil (från Uppgift 1) är korrekt inställd för att triggas vid push till din dev-branch och deploya koden.
 
+Genomför Permanent Deployment : Gå till din öppna Pull Request (från Uppgift 1) och merga den in i din dev-branch. Detta är den åtgärd som triggar den permanenta pipeline-körningen.
 
-Dubbelkolla
-Kontrollera att din YAML-fil nu innehåller de nya behörigheterna, fetch-depth: 0 och steget Initialize CodeQL. fetch-depth: 0 behövs för att CodeQL ska få hela vår branch historik för att kunna göra djupare analyser och ge oss feedback
+Verifiera Permanent Staging-URL : Kontrollera din Azure Static Web App-resurs i portalen. Besök den primära URL som är associerad med din SWA. Verifiera att din kod nu har uppdaterats på denna permanenta adress.
+
+Dokumentera: I din README.md, notera denna permanenta Staging-URL. Förklara kort varför denna länk (till skillnad från Preview URL:en) är den som ska delas med externa intressenter som en Produktägare (PO).
