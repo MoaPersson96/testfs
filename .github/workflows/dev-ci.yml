@@ -50,5 +50,5 @@ jobs:
           echo "Deploying to Azure Container App"
           az containerapp update \
             --name my-backend-dev \
-            --resource-group my-rg \
+            --resource-group training-moa_group \
             --image ${{ env.ACR_REGISTRY }}/my-backend:${GIT_SHA}
