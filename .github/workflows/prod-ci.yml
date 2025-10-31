@@ -37,6 +37,11 @@ jobs:
           docker tag my-backend:${GIT_SHA} ${{ env.ACR_REGISTRY }}/my-backend:${GIT_SHA}
           docker push ${{ env.ACR_REGISTRY }}/my-backend:${GIT_SHA}
 
+      - name: Azure login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
       - name: Deploy to API-PROD
         run: |
           echo "Deploying Docker image ${GIT_SHA} to API-PROD"
