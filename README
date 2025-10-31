@@ -1,15 +1,11 @@
-Vecka 43. Uppgift 1
+Vecka 41. Uppgift 4
 
-Uppdatera YAML – Behörigheter & CodeQL
-Du ska nu redigera din build-and-test.yml (eller motsvarande fil) i ditt GitHub-repo.
-1. Lägg till nya behörigheter
-Vi måste lägga till en extra behörighet i ditt YAML-jobb så att CodeQL kan rapportera säkerhetsresultat. Behörigheten gäller för security-events.
-Hitta permissions:-sektionen och ändra den till följande. Om du inte har den, lägg till den under runs-on: ubuntu-latest.
-    
-   
-2. Lägg till CodeQL-initiering
-Nu introducerar vi den första delen av CodeQL-processen (AI-granskning). Detta måste ske direkt efter Checkout code. Vi behöver lägga till en behörighet för Checkout steget samt ett nytt steg för själva CodeQL
+Uppgift 4: Leverans till Produktion (Continuous Delivery)
+Mål: Slutföra frontendens Continuous Delivery (CD) flöde genom att konfigurera en pipeline som automatiskt deployar godkänd kod från dev till Produktion (main).
+Förbered CD-Pipeline : Se till att din produktionsmiljö (från Uppgift 3) har en fungerande CI/CD-pipeline. Om du valde SWA: verifiera att den automatiskt lyssnar på main. Om du valde Netlify/Vercel eller annan tjänst: verifiera att den är kopplad till main.
 
+Genomför Skarp Deployment : Merga din dev-branch till din main-branch. Detta ska trigga produktions-pipelinen.
 
-Dubbelkolla
-Kontrollera att din YAML-fil nu innehåller de nya behörigheterna, fetch-depth: 0 och steget Initialize CodeQL. fetch-depth: 0 behövs för att CodeQL ska få hela vår branch historik för att kunna göra djupare analyser och ge oss feedback
+Verifiera Offentlig URL : Kontrollera att din frontend nu har uppdaterats på din skarpa, publika Produktions-URL.
+
+Slutsats: Detta flöde (från dev till main) bevisar att du har implementerat Continuous Delivery för din frontend. Notera den skarpa URL:en i din README.md.
