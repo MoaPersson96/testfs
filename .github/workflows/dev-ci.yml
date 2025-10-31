@@ -8,6 +8,9 @@ on:
 jobs:
   build_test_deploy:
     runs-on: ubuntu-latest
+    env:
+      GIT_SHA: ${{ github.sha }}
+      ACR_REGISTRY: mybackend.azurecr.io
 
     steps:
       - name: Checkout code
@@ -19,28 +22,27 @@ jobs:
       - name: Login to ACR
         uses: docker/login-action@v2
         with:
-          registry: mybackend.azurecr.io
+          registry: ${{ env.ACR_REGISTRY }}
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
 
       - name: Build Docker image
         run: |
-          GIT_SHA=$(git rev-parse --short HEAD)
-          echo "GIT_SHA=$GIT_SHA"
-          docker build -t mybackend.azurecr.io/my-backend:${GIT_SHA} .
+          echo "Building Docker image with tag: ${GIT_SHA}"
+          docker build -t ${{ env.ACR_REGISTRY }}/my-backend:${GIT_SHA} .
 
       - name: Run Unit Tests
         run: |
           GIT_SHA=$(git rev-parse --short HEAD)
-          docker run --rm mybackend.azurecr.io/my-backend:${GIT_SHA} npm test
+          docker run --rm ${{ env.ACR_REGISTRY }}/my-backend:${GIT_SHA} npm test
 
       - name: Push Docker image
         run: |
-          docker push mybackend.azurecr.io/my-backend:${GIT_SHA}
+          docker push ${{ env.ACR_REGISTRY }}/my-backend:${GIT_SHA}
 
       - name: Deploy to API-DEV
         run: |
           az containerapp update \
             --name my-backend-dev \
             --resource-group my-rg \
-            --image mybackend.azurecr.io/my-backend:${GIT_SHA}
+            --image ${{ env.ACR_REGISTRY }}/my-backend:${GIT_SHA}
