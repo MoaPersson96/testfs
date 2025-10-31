@@ -1,30 +1,57 @@
-name: Dockermulti CI
+name: Backend Dev CI/CD
 
 on:
     push:
         branches:
-            - Vecka-38
+            - v36-uppgift2
 
 jobs:
-    build:
+    build_test_deploy:
         runs-on: ubuntu-latest
+        env:
+          GIT_SHA: ${{ github.sha }}
+          ACR_REGISTRY: mybackend.azurecr.io
 
 
         steps:
           - name: Checkout code
             uses: actions/checkout@v4
 
-          - name: Build test image
-            run: docker build --target builder -t v38-builder:latest .
+          - name: Setup Docker Buildx
+            uses: docker/setup-buildx-action@v2
 
-          - name: Run tests in builder container
-            run: docker run --rm v38-builder:latest npm test -- --passWithNoTests
+          - name: Login to ACR
+            uses: docker/login-action@v2
+            with:
+              registry: ${{ env.ACR_REGISTRY }}
+              username: ${{ secrets.ACR_USERNAME }}
+              password: ${{ secrets.ACR_PASSWORD }}
 
-          - name: Build production image
-            run: docker build --target production -t zowerino/v38:latest .
+          - name: Build Docker image
+            run: |
+              echo "Building Docker image with tag: ${GIT_SHA}"
+              docker build -t my-backend:${GIT_SHA} .
 
-          - name: Log in to Docker Hub
-            run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+          - name: Run tests inside container
+            run: |
+              echo "Running tests inside Docker container"
+              docker run --rm my-backend:${GIT_SHA} npm test
 
-          - name: Push production image to Docker Hub
-            run: docker push zowerino/v38:latest
+          - name: Tag and push image to ACR
+            run: |
+              echo "Tagging and pushing image to ACR"
+              docker tag my-backend:${GIT_SHA} ${{ env.ACR_REGISTRY }}/my-backend:${GIT_SHA}
+              docker push ${{ env.ACR_REGISTRY }}/my-backend:${GIT_SHA}
+
+          - name: Azure login
+            uses: azure/login@v1
+            with:
+              creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+          - name: Deploy to API-DEV
+            run: |
+              echo "Deploying to API-DEV"
+              az containerapp update \
+                --name my-backend-dev \
+                --resource-group training-moa_group \
+                --image ${{ env.ACR_REGISTRY }}/my-backend:${GIT_SHA}
