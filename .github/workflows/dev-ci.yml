@@ -37,7 +37,7 @@ jobs:
       - name: Tag and push Docker image
         run: |
           echo "Tagging image for ACR push"
-          docker tag my-backend${GIT_SHA} ${{ env.ACR_REGISTRY }}/my-backend:${GIT_SHA}
+          docker tag my-backend:${GIT_SHA} ${{ env.ACR_REGISTRY }}/my-backend:${GIT_SHA}
           docker push ${{ env.ACR_REGISTRY }}/my-backend:${GIT_SHA}
           
       - name: Deploy to API-DEV
