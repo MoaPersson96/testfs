@@ -19,3 +19,22 @@ Verifierade att pipelinen blev grön igen.
 
 🔑 Varför: Lär er felsöka pipelines – bra DevOps-skills att ha.
 
+
+## Skärmdump på GitHub Action error:
+-  https://imgur.com/y1MtcQA
+-  https://imgur.com/OL3xP8g
+
+Jag skapade ett medvetet fel i min dummy.test.js - körde min pipeline och läste igenom min kod - läste igenom actions loggen för att få ett bättre förstånd över hur loggen fungerar. Där i stod det exact den kod jag skrivit och att det är den som inte går igenom testet.
+Jag gick sen in i den filen och fixade felet.
+
+Koden jag skrev in för fel:
+test('dummy test', () => {
+  expect(1 + 1).toBe(3);
+});
+
+Rättade den till:
+test('dummy test', () => {
+  expect(1 + 1).toBe(2);
+});
+
+
