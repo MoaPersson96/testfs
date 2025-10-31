@@ -1,15 +1,35 @@
-Vecka 43. Uppgift 1
+Vecka 36. Uppgift 5
 
-Uppdatera YAML – Behörigheter & CodeQL
-Du ska nu redigera din build-and-test.yml (eller motsvarande fil) i ditt GitHub-repo.
-1. Lägg till nya behörigheter
-Vi måste lägga till en extra behörighet i ditt YAML-jobb så att CodeQL kan rapportera säkerhetsresultat. Behörigheten gäller för security-events.
-Hitta permissions:-sektionen och ändra den till följande. Om du inte har den, lägg till den under runs-on: ubuntu-latest.
-    
-   
-2. Lägg till CodeQL-initiering
-Nu introducerar vi den första delen av CodeQL-processen (AI-granskning). Detta måste ske direkt efter Checkout code. Vi behöver lägga till en behörighet för Checkout steget samt ett nytt steg för själva CodeQL
+Uppgift 5: Pipelinefel – simulera och förstå felhantering
+Mål: Förstå vad som händer när pipelinen failar och hur man felsöker.
+ Instruktioner:
+Gör en medveten bugg i koden (t.ex. få en test att faila).
 
+Push och kör pipelinen.
 
-Dubbelkolla
-Kontrollera att din YAML-fil nu innehåller de nya behörigheterna, fetch-depth: 0 och steget Initialize CodeQL. fetch-depth: 0 behövs för att CodeQL ska få hela vår branch historik för att kunna göra djupare analyser och ge oss feedback
+Skärmdumpa felet i GitHub Actions.
+
+Skriv i README hur du:
+
+Hittade felet i loggen.
+
+Fixade buggen.
+
+Verifierade att pipelinen blev grön igen.
+
+🔑 Varför: Lär er felsöka pipelines – bra DevOps-skills att ha.
+
+Uppgift 6: Förstå taggar bättre
+Mål: Lär er versionshantering av images i Docker Hub.
+ Instruktioner:
+Bygg och pusha en image med :v1.0.0.
+
+Gör en kodändring och pusha som :v1.1.0.
+
+Byt i docker-compose.yml så att du använder :v1.0.0 och starta projektet.
+
+Byt till :v1.1.0 och starta igen.
+
+Dokumentera i README skillnaden mellan att alltid använda :latest och att specificera versions-taggar.
+
+🔑 Varför: Få en känsla för versionshantering
