@@ -11,3 +11,6 @@ Initiera Pull Request (PR) och Pipeline : Skapa en ny feature-branch lokalt (t.e
 Verifiera Temporär Preview URL : Kontrollera i din PR på GitHub att SWA automatiskt har triggat en build och skapat en unik Preview URL. Klicka på länken och verifiera att din kodändring syns där.
 
 Slutsats: Inkludera en skärmdump av din Preview Deployment i din README.md som bevis på agil granskning.
+
+Skärmdump:
+https://imgur.com/inPp4K7
