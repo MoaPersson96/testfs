@@ -3,7 +3,7 @@ name: Generate API Docs
 on:
   push:
     branches:
-      - v42-uppgift5
+      - v42-uppgift1
 
 jobs:
   generate_docs:
